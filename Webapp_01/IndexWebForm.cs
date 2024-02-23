@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
@@ -17,6 +19,8 @@ namespace Webapp_01
         string strcon = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
         private object column_right;
 
+        public object Ul1 { get; private set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -28,6 +32,8 @@ namespace Webapp_01
                 // Handle exceptions
                 Response.Write("<script>alert('An error occurred: " + ex.Message + "');</script>");
             }
+
+            FetchExpertiseDetails();
         }
 
         protected void BindExpertiseData()
@@ -89,6 +95,55 @@ namespace Webapp_01
             }
         }
 
+
+
+
+        protected void FetchExpertiseDetails()
+        {
+            try
+            {
+                string strcon = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+
+                using (SqlConnection connection = new SqlConnection(strcon))
+                {
+                    // Open the connection
+                    connection.Open();
+
+                    // SQL query to fetch data
+                    string query = "SELECT Project, Description FROM Expertise_details";
+
+                    // Create a SqlCommand
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        // Execute the query and get the result set
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            // Find the Ul1 control
+                            HtmlGenericControl Ul1 = (HtmlGenericControl)FindControl("Ul1");
+
+                            // Loop through the result set and add list items to Ul1
+                            while (reader.Read())
+                            {
+                                string project = reader["Project"].ToString();
+                                string description = reader["Description"].ToString();
+
+                                // Create list item
+                                HtmlGenericControl li = new HtmlGenericControl("li");
+                                li.InnerHtml = $"<strong>{project}:</strong> {description}";
+
+                                // Add list item to ul
+                                Ul1.Controls.Add(li);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                Response.Write($"An error occurred: {ex.Message}");
+            }
+        }
 
 
 

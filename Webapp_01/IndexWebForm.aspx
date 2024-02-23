@@ -146,23 +146,18 @@
 
 
 
-
-  <section id="experience">
+<section id="experience">
     <div class="max-width">
         <h2 class="title">My Expertise</h2>
         <div class="experience-details-container">
-            <div class="column left">
+            <div class="column_left">
                 <div class="text">
                     <strong>My professional experience & projects.</strong>
                     <p>
                         I possess a diverse skill set and have gained valuable experience through various projects and endeavors. Some of my notable projects include:
                     </p>
-                    <ul>
-                        <li><strong>SimuWallet:</strong> A personal finance management app.</li>
-                        <li><strong>NewsApp:</strong> An application for personalized news recommendations.</li>
-                        <li><strong>TypO:</strong> A productivity tool for improving typing accuracy.</li>
-                        <li><strong>BMI Calculator:</strong> A tool for calculating Body Mass Index (BMI).</li>
-                        <li><strong>Book Shop Management:</strong> A system for managing bookshop operations.</li>
+                    <ul id="Ul1" runat="server" class="Ul1">
+                        <!-- Dynamic list items will be inserted here -->
                     </ul>
                     <p>
                         Additionally, I have <strong>C++ expertise</strong> and extensive experience in <strong>competitive programming</strong>, participating in platforms like Codeforces and CodeChef.
@@ -170,12 +165,14 @@
                 </div>
             </div>
             <div id="column_right" runat="server" class="column_right">
-                <!-- Dynamic data will be inserted here -->
-                <%-- This section will be dynamically generated from the code-behind --%>
+                <!-- This section will be dynamically generated from the code-behind -->
             </div>
         </div>
     </div>
 </section>
+
+
+
 
 
 

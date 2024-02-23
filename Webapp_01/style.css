@@ -441,7 +441,7 @@ a:hover {
   align-items: center; /* Center vertically */
 }
 
-.column.left {
+.column_left {
   flex: 1;
   margin-right: 2rem;
 }
