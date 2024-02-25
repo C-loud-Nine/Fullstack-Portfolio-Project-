@@ -55,58 +55,36 @@
 
    
     <section id="profile">
-        <div class="section__pic-container">
-          <img src="./assets/Portfolio dp-modified.png" alt="Shafi DP" />
+    <div class="section__pic-container">
+        <img src="./assets/Portfolio dp-modified.png" alt="Shafi DP" />
+    </div>
+    <div class="section__text">
+        <p class="section__text__p1">Hello, I'm</p>
+        <h1 class="title">Abdullah Al Shafi</h1>
+        <p class="section__text__p2">CS Undergrad, KUET</p>
+        <p class="tag">And I'm a<br /><span class="typing"></span></p>
+        <div class="btn-container">
+            <button class="btn btn-color-2" onclick="window.open('./assets/resume-example.pdf')">Download CV</button>
+            <button class="btn btn-color-1" onclick="location.href='./#contact'">Contact Info</button>
         </div>
-        <div class="section__text">
-          <p class="section__text__p1">Hello, I'm</p>
-          <h1 class="title">Abdullah Al Shafi</h1>
-          <p class="section__text__p2">CS Undergrad, KUET</p>
-          <p class="tag">And I'm a<br><span class="typing"></span></p>
-          <div class="btn-container">
-            <button
-              class="btn btn-color-2"
-              onclick="window.open('./assets/resume-example.pdf')"
-            >
-              Download CV
-            </button>
-            <button class="btn btn-color-1" onclick="location.href='./#contact'">
-              Contact Info
-            </button>
-          </div>
-          <div id="socials-container">
-            <img
-              src="./assets/linkedin.png"
-              alt="My LinkedIn profile"
-              class="icon"
-              onclick="location.href='https://www.linkedin.com/in/shafi-abdullah-0955a0293/'"
-            />
-            <img
-              src="./assets/github.png"
-              alt="My Github profile"
-              class="icon"
-              onclick="location.href='https://github.com/C-loud-Nine'"
-            />
-            <img src="./assets/wordpress.png" 
-              alt="My Wordpress"
-              class="icon"
-              onclick="window.open('https://abshafiblogs.wordpress.com/')"
-            />
-            <img src="./assets/insta.png" 
-              alt="My Instagram Profile"
-              class="icon"
-              onclick="window.open('https://www.instagram.com/shafi__abdullah/')"
-            />
-            <img src="./assets/goodreads.png" 
-              alt="My Gdreads Profile"
-              class="icon"
-              onclick="window.open('https://www.goodreads.com/abdullahshafi/')"
-            />                      
-          </div>
-        </div>
+        <div id="socials-container">
+    <asp:Repeater ID="SocialMediaRepeater" runat="server">
+        <ItemTemplate>
+            <a href='<%# Eval("Link") %>' target="_blank">
+                <img src='<%# Eval("ImagePath") %>' alt='<%# Eval("AltText") %>' class="icon" />
+            </a>
+        </ItemTemplate>
+    </asp:Repeater>
+</div>
+
+
+    </div>
     </section>
 
 
+    
+    
+    
     <section id="about">
       <img src="./assets/arrow_top.png" alt="Arrow icon" class="icon arrow_top" onclick="location.href='./#home'">
       <h1 class="title">About Me</h1>
@@ -492,29 +470,30 @@
                 </div>
             </div>
         </div>
-        <div class="column right">
-            <div class="text">Message me</div>
-            <form id="contactForm" runat="server">
-                <div class="fields">
-                    <div class="field name">
-                        <asp:TextBox ID="txtName" runat="server" placeholder="Name" required></asp:TextBox>
-                    </div>
-                    <div class="field email">
-                        <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" required></asp:TextBox>
-                    </div>
+       <div class="column right">
+        <div class="text">Message me</div>
+        <form id="contactForm" runat="server">
+            <div class="fields">
+                <div class="field name">
+                    <asp:TextBox ID="txtName" runat="server" placeholder="Name" required></asp:TextBox>
                 </div>
-                <div class="field">
-                    <asp:TextBox ID="txtSubject" runat="server" placeholder="Subject" required></asp:TextBox>
+                <div class="field email">
+                    <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" required></asp:TextBox>
                 </div>
-                <div class="field textarea">
-                    <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" Rows="10" placeholder="Message.." required></asp:TextBox>
-                </div>
-                <div class="btn__container__contact">
-                    <asp:Button ID="btnSend" runat="server" Text="Send message" CssClass="btn btn-color-1" OnClick="btnSend_Click" />
-                </div>
-            </form>
-        </div>
+            </div>
+            <div class="field">
+                <asp:TextBox ID="txtSubject" runat="server" placeholder="Subject" required></asp:TextBox>
+            </div>
+            <div class="field textarea">
+                <asp:TextBox ID="txtMessage" runat="server" TextMode="MultiLine" Rows="10" placeholder="Message.." required></asp:TextBox>
+            </div>
+            <div class="btn_container_contact">
+                <asp:Button ID="btnSend" runat="server" Text="Send message" CssClass="btn btn-color-1" OnClick="btnSend_Click" />
+            </div>
+        </form>
     </div>
+</div>
+
 
     <footer>
         <nav class="footer-nav">

@@ -34,7 +34,62 @@ namespace Webapp_01
             }
 
             FetchExpertiseDetails();
+
+            if (!IsPostBack)
+            {
+                BindSocialMediaLinks();
+            }
+
+
         }
+
+
+        protected void BindSocialMediaLinks()
+        {
+            try
+            {
+                string strcon = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+                string query = "SELECT AltText, Link, ImagePath FROM SocialMediaLinks";
+
+                using (SqlConnection connection = new SqlConnection(strcon))
+                {
+                    // Open the connection
+                    connection.Open();
+
+                    // Create a SqlDataAdapter
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(query, connection))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        // Find the SocialMediaRepeater control
+                        Repeater SocialMediaRepeater = (Repeater)FindControl("SocialMediaRepeater");
+
+                        // Bind the data to the Repeater control
+                        SocialMediaRepeater.DataSource = dataTable;
+                        SocialMediaRepeater.DataBind();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         protected void BindExpertiseData()
         {
@@ -152,7 +207,6 @@ namespace Webapp_01
             SqlConnection con = new SqlConnection(strcon);
             con.Open();
 
-
             SqlCommand cmd = new SqlCommand("INSERT INTO Contact ([Name], [Email], [Subject], [msg]) VALUES(@Name, @Email, @Subject, @msg)", con);
 
             cmd.Parameters.AddWithValue("@Name", txtName.Text.Trim());
@@ -160,18 +214,22 @@ namespace Webapp_01
             cmd.Parameters.AddWithValue("@Subject", txtSubject.Text.Trim());
             cmd.Parameters.AddWithValue("@msg", txtMessage.Text.Trim());
 
-
             cmd.ExecuteNonQuery();
 
             // Close the connection
             con.Close();
 
+            // Clear text fields
+            txtName.Text = "";
+            txtEmail.Text = "";
+            txtSubject.Text = "";
+            txtMessage.Text = "";
+
             // Success message in alerts
-            Response.Write("<script>alert('Course added!');</script>");
-
-
-
+            Response.Write("<script>alert('Message sent!');</script>");
         }
+
+
     }
 
 }
