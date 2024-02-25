@@ -154,99 +154,36 @@
 
 
 
+<<section id="projects">
+    <p class="section__text__p1">Explore My Latest</p>
+    <h1 class="title">Projects</h1>
+    <div class="project-details-container">
+        <asp:Repeater ID="ProjectRepeater" runat="server">
+            <ItemTemplate>
+                <%# Container.ItemIndex % 3 == 0 ? "<div class='about-containers'>" : "" %>
+                <div class="details-container color-container">
+                    <div class="article-container">
+                        <img src='<%# Eval("ImagePath") %>' alt='<%# Eval("AltText") %>' class="project-img" />
+                    </div>
+                    <h2 class="experience-sub-title project-title"><%# Eval("Title") %></h2>
+                    <p class="project-description"><%# Eval("Description") %></p>
+                    <div class="btn-container">
+                        <button class="btn btn-color-2 project-btn" onclick="window.open('<%# Eval("Link") %>')">
+                            <span class="btn-text">Github</span>
+                            <span class="iconify" data-icon="akar-icons:github-fill"></span>
+                        </button>
 
-<section id="projects">
-  <p class="section__text__p1">Explore My Latest</p>
-  <h1 class="title">Projects</h1>
-  <div class="project-details-container">
-    <div class="about-containers">
-      <div class="details-container color-container">
-        <div class="article-container">
-          <img src="./assets/atmweb.jpg" alt="Project 1" class="project-img" />
-        </div>
-        <h2 class="experience-sub-title project-title">SimuWallet</h2>
-        <p class="project-description">ATM simulation app.</p>
-        <div class="btn-container">
-          <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/C-loud-Nine/SimuWallet'">
-            <span class="btn-text">Github</span>
-            <span class="iconify" data-icon="akar-icons:github-fill"></span>
-          </button>
-        </div>
-      </div>
-      <div class="details-container color-container">
-        <div class="article-container">
-          <img src="./assets/bmi.jpg" alt="Project 2" class="project-img" />
-        </div>
-        <h2 class="experience-sub-title project-title">BMI Calculator</h2>
-        <p class="project-description">Developed using Kotlin for Android .Simple and user-friendly interface.</p>
-        <div class="btn-container">
-          <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/C-loud-Nine/BMI-Calculator'">
-            <span class="btn-text">Github</span>
-            <span class="iconify" data-icon="akar-icons:github-fill"></span>
-          </button>
-        </div>
-      </div>
-      <div class="details-container color-container">
-        <div class="article-container">
-          <img src="./assets/bookweb.jpg" alt="Project 3" class="project-img" />
-        </div>
-        <h2 class="experience-sub-title project-title">Bookshop Management System</h2>
-        <p class="project-description">Built with C++.</p>
-        <div class="btn-container">
-          <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/C-loud-Nine/Book-Shop-Management-System-'">
-            <span class="btn-text">Github</span>
-            <span class="iconify" data-icon="akar-icons:github-fill"></span>
-          </button>
-        </div>
-      </div>
+                    </div>
+                </div>
+                <%# (Container.ItemIndex + 1) % 3 == 0 || Container.ItemIndex == (Container.DataItem as System.Data.DataRowView).DataView.Count - 1 ? "</div>" : "" %>
+            </ItemTemplate>
+        </asp:Repeater>
     </div>
-
-    <div class="about-containers">
-      <div class="details-container color-container">
-        <div class="article-container">
-          <img src="./assets/newsi.jpg" alt="Project 4" class="project-img" />
-        </div>
-        <h2 class="experience-sub-title project-title">News App</h2>
-        <p class="project-description">A news app with the power of API request and JAVA.</p>
-        <div class="btn-container">
-          <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/C-loud-Nine/News-App'">
-            <span class="btn-text">Github</span>
-            <span class="iconify" data-icon="akar-icons:github-fill"></span>
-          </button>
-        </div>
-      </div>
-      <div class="details-container color-container">
-        <div class="article-container">
-          <img src="./assets/typr.jpg" alt="Project 3" class="project-img" />
-        </div>
-        <h2 class="experience-sub-title project-title">typO</h2>
-        <p class="project-description">Developed with JS to improve typing speed.</p>
-        <div class="btn-container">
-          <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/C-loud-Nine/typO'">
-            <span class="btn-text">Github</span>
-            <span class="iconify" data-icon="akar-icons:github-fill"></span>
-          </button>
-        </div>
-      </div>
-      <div class="details-container color-container">
-        <div class="article-container">
-          <img src="./assets/calc.png" alt="Project 3" class="project-img" />
-        </div>
-        <h2 class="experience-sub-title project-title">Calculator</h2>
-        <p class="project-description">Basic calculator built with C , file handling etc.</p>
-        <div class="btn-container">
-          <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/C-loud-Nine/Basic-Calculator-Project-1-2-'">
-            <span class="btn-text">Github</span>
-            <span class="iconify" data-icon="akar-icons:github-fill"></span>
-          </button>
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
-
-  <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#contact'" />
+    <img src="./assets/arrow.png" alt="Arrow icon" class="icon arrow" onclick="location.href='./#contact'" />
 </section>
+
+
+
 
 
 

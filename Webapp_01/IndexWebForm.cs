@@ -38,9 +38,43 @@ namespace Webapp_01
             if (!IsPostBack)
             {
                 BindSocialMediaLinks();
+                BindProjects();
             }
 
 
+        }
+
+
+        protected void BindProjects()
+        {
+            try
+            {
+                string strcon = ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString;
+                string query = "SELECT Title, Description, Link, ImagePath, AltText FROM Projects";
+
+                using (SqlConnection connection = new SqlConnection(strcon))
+                {
+                    connection.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                        {
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+
+                            Repeater ProjectRepeater = (Repeater)FindControl("ProjectRepeater");
+
+                            ProjectRepeater.DataSource = dataTable;
+                            ProjectRepeater.DataBind();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
         }
 
 
