@@ -67,6 +67,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin.aspx" />
+    <Content Include="admin.css" />
+    <Content Include="admin.js" />
     <Content Include="assets\about-pic.png" />
     <Content Include="assets\arrow.png" />
     <Content Include="assets\arrow_top.png" />
@@ -120,18 +123,33 @@
     <Content Include="assets\vasaprotijog.jpg" />
     <Content Include="assets\wordpress.png" />
     <Content Include="IndexWebForm.aspx" />
+    <Content Include="login.aspx" />
     <Content Include="mediaqueries.css" />
     <Content Include="script.js" />
     <Content Include="style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin.aspx.cs">
+      <DependentUpon>admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin.aspx.designer.cs">
+      <DependentUpon>admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="IndexWebForm.cs">
       <DependentUpon>IndexWebForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="IndexWebForm.aspx.designer.cs">
       <DependentUpon>IndexWebForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
